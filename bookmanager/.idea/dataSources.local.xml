@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-223.8836.43">
-    <data-source name="@192.168.253.130" uuid="5f34e0ee-b529-4536-8d20-1d777daa4679">
-      <database-info product="MySQL" version="5.7.42-0ubuntu0.18.04.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="5.7.42" exact-driver-version="8.2">
+    <data-source name="@192.168.253.133" uuid="5f34e0ee-b529-4536-8d20-1d777daa4679">
+      <database-info product="MySQL" version="5.7.42-0ubuntu0.18.04.1-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="5.7.42" exact-driver-version="8.2">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>

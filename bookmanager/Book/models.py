@@ -16,7 +16,6 @@ from django.db import models
 
 
 class Book(models.Model):
-    # id
     name = models.CharField(max_length=10,verbose_name='名称')
     pub_data = models.DateField(verbose_name='发布日期',null=True)
     readcount = models.IntegerField(default=0,verbose_name='阅读量')
