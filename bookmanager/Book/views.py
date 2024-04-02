@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 # 定义视图：提供服务器路径下的数据
@@ -14,7 +15,7 @@ def index(request):
 
 
 # 增加方式一：
-from Book.models import Book,PeopleInfo
+from Book.models import Book, PeopleInfo
 
 # Book = Book(
 #     name='Django',
@@ -112,7 +113,7 @@ from Book.models import Book,PeopleInfo
 # print(book)
 
 # 级联查询
-    #关联查询
+# 关联查询
 # 查询书籍为1的所有人物信息
 book = Book.objects.get(id=1)
 person = book.peopleinfo_set.all()
@@ -141,9 +142,51 @@ print(person)
 book = Book.objects.all()
 # 导入分页类
 from django.core.paginator import Paginator
+
 # 创建分页实例
-paginator = Paginator(book,2)
+paginator = Paginator(book, 2)
 # 获取制定页码的数据
 page_book = paginator.page(1)
 # 获取分页数据
 total = paginator.num_pages
+
+# URL路径参数
+# def goods(request, cat_id, id):
+#     return JsonResponse({'cat_id': cat_id, 'id': id})
+
+
+# 查询字符串参数
+"""
+    http://ip/port/path/?key=value&key1=value1
+"""
+
+
+def shops(request, city_id, shop_id):
+    query_params = request.GET
+    # 查询字符串参数使用get只能通过键获取一个值，当一个键有多个值的时候，则使用get只能获取最后值
+    order = query_params.get('order')
+    print(order)
+    # 使用getlist()方法，当一个键有多个值的时候，则可以获取所有的值
+    order_list = query_params.getlist('order')
+    print(order_list)
+    # 获取到请求字符串的所有参数
+    print(query_params)
+    return HttpResponse('这是我的饭店')
+
+
+def register(request):
+    data = request.POST
+    print(data)
+    return HttpResponse('ok')
+
+
+def json(request):
+    body = request.body
+    print(body)
+    # b'{\n    "name":"dwj",\n    "age":"123"\n\n}'
+    body_str = body.decode()
+    print(body_str)
+    import json
+    body_dict =  json.loads(body_str)
+    print(body_dict)
+    return HttpResponse('ok')
