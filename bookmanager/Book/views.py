@@ -150,9 +150,10 @@ page_book = paginator.page(1)
 # 获取分页数据
 total = paginator.num_pages
 
+
 # URL路径参数
-# def goods(request, cat_id, id):
-#     return JsonResponse({'cat_id': cat_id, 'id': id})
+def goods(request, cat_id, id):
+    return JsonResponse({'cat_id': cat_id, 'id': id})
 
 
 # 查询字符串参数
@@ -161,7 +162,7 @@ total = paginator.num_pages
 """
 
 
-def shops(request, city_id, shop_id):
+def shops(request):
     query_params = request.GET
     # 查询字符串参数使用get只能通过键获取一个值，当一个键有多个值的时候，则使用get只能获取最后值
     order = query_params.get('order')
@@ -187,6 +188,24 @@ def json(request):
     body_str = body.decode()
     print(body_str)
     import json
-    body_dict =  json.loads(body_str)
+    body_dict = json.loads(body_str)
     print(body_dict)
+    # 请求头对象
+    print(request.META)
+    # 请求头的端口参数
+    print(request.META['SERVER_PORT'])
+    # 请求的方法
+    print(request.method)
+    # 请求的用户对象
+    print(request.user)
+    # 请求的路径
+    print(request.path)
+    # 请求的编码
+    print(request.encoding)
+    # 上传的文件
+    print(request.FILES)
     return HttpResponse('ok')
+
+
+def response(request):
+    return HttpResponse('res')
