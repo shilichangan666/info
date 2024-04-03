@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import redirect
 
+
 # 定义视图：提供服务器路径下的数据
 def index(request):
     # 准备上下文：定义在字典中（测试数据）
@@ -216,9 +217,38 @@ def response(request):
 
 # JsonResponse
 def jsonresponse(request):
-    return JsonResponse({'city': 'begin', 'subject': 'python'})
+    girl_friend = {
+        'name': '小美',
+        'age': 20
+    }
+    return JsonResponse(data=girl_friend, safe=False)
+    # return JsonResponse({'city': 'begin', 'subject': 'python'})
 
 
 # Redirect重定向
 def redirectresponse(request):
     return redirect('/index')
+
+
+# Cookie
+# 设置cookie
+def cookie(request):
+    response = HttpResponse('ok')
+    response.set_cookie('username', 'dwj')
+    response.set_cookie('usernames', 'dwj1', max_age=3600)  # 设置cookie，有效期为一小时
+    return response
+
+    # 读取cookie
+
+
+def cookieread(request):
+    cookie = request.COOKIES.get('usernames')
+    print(cookie)
+    return HttpResponse('ok')
+
+
+# 删除cookie
+def delcookie(request):
+    response = HttpResponse('Cookie delete')
+    response.delete_cookie('usernames')
+    return response

@@ -1,5 +1,5 @@
 from django.urls import path
-from Book.views import index,goods,shops,register,json,response,jsonresponse,redirectresponse
+from Book.views import index,goods,shops,register,json,response,jsonresponse,redirectresponse,cookie,cookieread,delcookie
 urlpatterns = [
     path('index/',index),
     path('<cat_id>/<id>/',goods),
@@ -8,6 +8,9 @@ urlpatterns = [
     path('json/',json),
     path('res',response),
     path('jsonresponse/',jsonresponse),
-    path('redirect/',redirectresponse)
+    path('redirect/',redirectresponse),
+    path('cookie/',cookie),
+    path('cookies/',cookieread),
+    path('delcookie/',delcookie)
 
 ]
