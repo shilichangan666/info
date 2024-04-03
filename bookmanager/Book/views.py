@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import JsonResponse
-
+from django.shortcuts import redirect
 
 # 定义视图：提供服务器路径下的数据
 def index(request):
@@ -208,4 +208,17 @@ def json(request):
 
 
 def response(request):
-    return HttpResponse('res')
+    response = HttpResponse('djangoPython')
+    response.status_code = 200
+    response['dwj'] = 'xmut'
+    return response
+
+
+# JsonResponse
+def jsonresponse(request):
+    return JsonResponse({'city': 'begin', 'subject': 'python'})
+
+
+# Redirect重定向
+def redirectresponse(request):
+    return redirect('/index')
