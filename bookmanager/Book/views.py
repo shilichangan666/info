@@ -263,6 +263,13 @@ def set_session(request):
     user_id = 1
     request.session['user_id'] = user_id
     request.session['username'] = username
+
+    # clear 删除session里的数据，但是key有保留
+    #request.session.clear()
+    # flush是删除所有，包括key
+    #request.session.flush()
+    #del request.session['username']
+    request.session.set_expiry(3600)
     return HttpResponse("set_session")
 
 
