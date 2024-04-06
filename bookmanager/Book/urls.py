@@ -1,6 +1,6 @@
 from django.urls import path
 from Book.views import index,goods,shops,register,json,response,jsonresponse,\
-    redirectresponse,cookie,cookieread,delcookie,set_session,get_session
+    redirectresponse,cookie,cookieread,delcookie,set_session,get_session,login,LoginView
 urlpatterns = [
     path('index/',index),
     path('<cat_id>/<id>/',goods),
@@ -14,6 +14,8 @@ urlpatterns = [
     path('cookies/',cookieread),
     path('delcookie/',delcookie),
     path('set_session/',set_session),
-    path('get_session/',get_session)
+    path('get_session/',get_session),
+    path('login/',login),
+    path('163com/',LoginView.as_view())
 
 ]

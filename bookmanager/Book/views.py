@@ -5,6 +5,7 @@ from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import redirect
+from django.views import View
 
 
 # 定义视图：提供服务器路径下的数据
@@ -279,3 +280,18 @@ def get_session(request):
     username = request.session['username']
     content = '{},{}'.format(user_id,username)
     return HttpResponse(content)
+
+# 类视图的创建
+def login(request):
+    print(request.method)
+    if request.method == 'GET':
+        return HttpResponse('get 请求')
+    else:
+        return HttpResponse('post 请求')
+
+class LoginView(View):
+    def get(self,request):
+        return  HttpResponse('get get get')
+
+    def post(self,request):
+        return HttpResponse('post post post')
